@@ -9,23 +9,46 @@
             text-align: center;
             background-color: aqua;
         }
+        .page ul li{
+            display:inline-block;
+            margin: 0px 10px;
+            position: relative;
+            min-width: 160px;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.7rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 10px 20px;
+        }
     </style>
 </head>
 <body>
     <h1>代辦事項</h1>
     
     {% for todo in todos %}
-    
-    <li>{{todo.created}}
-    <h2>
-        {{todo.title}} {%if todo.important%} 
+    <h2>{{todo.id}}</h2>
+    <li> {{todo.created}}
+    <div style="font-size: 2rem; font-weight: 400;">
+        <a href="{% url 'viewtodo' todo.id %}"  >{{todo.title}}</a> {%if todo.important%} 
         <span style="color: red;">重要!!</span>
         {%endif%}
-    </h2>
+    </div>
     </li>
     <hr>
     
     {% endfor %}
+    <div class="page">
+        <ul>
+            {% for todo in todos %}
+            <li><a href="{% url 'viewtodo' todo.id %}">{{todo.id}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
    
 </body>
 </html>
