@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}登入{% endblock %}
+{% block content %}
     <h1>登入</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <p>
             <label for="username">名稱:</label>
-            <input required type="text" name="username" id="username">
+            <input required type="text" name="username" id="username" value="{{username}}">
         </p>
         <p>
             <label for="username">密碼:</label>
@@ -21,5 +16,4 @@
 
     </form>
     {{message}}
-</body>
-</html>
+{% endblock %}

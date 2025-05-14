@@ -4,8 +4,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 # Create your views here.
 
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+
 def user_login(request):
     message = ''
+    username = ''
     if request.method=='POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -22,7 +28,7 @@ def user_login(request):
 
 
 
-    return render(request, 'user/login.html', {'message':message})
+    return render(request, 'user/login.html', {'message':message, 'username':username})
 
 
 

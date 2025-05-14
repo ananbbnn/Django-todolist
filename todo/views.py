@@ -4,11 +4,14 @@ from .models import Todo
 
 # Create your views here.
 def todolist(request):
+    user =request.user
     todos = Todo.objects.all()
+    #todos = Todo.objects.filter(user)
+    
     #todos = Todo.objects.filter(id=1)
     # filter篩選 get唯一
     print(todos)
-    result = {'todos':todos}
+    result = {'todos':todos ,'user':user}
 
     return render(request, 'todo/todolist.html' ,result)
 
