@@ -5,12 +5,15 @@ from .models import Todo
 # Create your views here.
 def todolist(request):
     user =request.user
-    todos = Todo.objects.all()
+    todos = None
+    if user.is_authenticated:
+        todos = Todo.objects.filter(user=request.user)
+    #todos = Todo.objects.all()
     #todos = Todo.objects.filter(user)
     
     #todos = Todo.objects.filter(id=1)
     # filter篩選 get唯一
-    print(todos)
+    print('todos:',user,todos)
     result = {'todos':todos ,'user':user}
 
     return render(request, 'todo/todolist.html' ,result)

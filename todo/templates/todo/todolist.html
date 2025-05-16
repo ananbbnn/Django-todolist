@@ -2,6 +2,10 @@
 {% block title %}代辦事項{% endblock %}
 {% block content %}
     <h1>代辦事項</h1>
+    <hr>
+    {% if not todos %}
+    <a href="{% url 'login' %}">請先登入或註冊!</a>
+    {% endif %}
     
     {% for todo in todos %}
     <h2>{{todo.id}}</h2>
