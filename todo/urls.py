@@ -16,9 +16,12 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import todolist,viewtodo
+from .views import todolist,viewtodo,createtodo, deletetodo
 
 urlpatterns = [
     path('',todolist, name='todolist'),
     path('viewtodo/<int:id>/',viewtodo, name='viewtodo'),
+    path('createtodo/',createtodo, name='createtodo'),
+    path('delete/<int:id>/',deletetodo, name='deletetodo'),
+
 ]

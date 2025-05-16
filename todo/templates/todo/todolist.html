@@ -8,17 +8,25 @@
     {% endif %}
     
     {% for todo in todos %}
-    <h2>{{todo.id}}</h2>
+
     <li> {{todo.created}}
     <div style="font-size: 2rem; font-weight: 400;">
-        <a href="{% url 'viewtodo' todo.id %}"  >{{todo.title}}</a> {%if todo.important%} 
-        <span style="color: red;">重要!!</span>
-        {%endif%}
+        {%if todo.important%} 
+        <span style="color: red;">(重要)</span>
+        {%endif%} 
+        <a href="{% url 'viewtodo' todo.id %}"  >{{todo.title}}</a>
+        <a href="{% url 'deletetodo' todo.id %}" onclick="return confirm('確定要刪除嗎?')" style="background-color: yellow; color: black; border-radius: 10%;">刪除</a>
+        <br>
+        <small>{{todo.text}}</small>
     </div>
+    {% if todo.date_completed %}
+    <p style="color: darkgreen;">{{todo.date_completed}}</p>
+    {% endif %}
     </li>
     <hr>
     
     {% endfor %}
+    
 
 {% endblock %}
    
