@@ -6,10 +6,23 @@ from datetime import datetime
 
 # Create your views here.
 def todolist(request):
+
+    filter_params=request.GET.get("filter")
+
+    print(filter_params)
     user =request.user
     todos = None
     if user.is_authenticated:
         todos = Todo.objects.filter(user=request.user).order_by('-created')
+        if filter_params == "important":
+            todos = todos.filter(important=True)
+        elif filter_params =="pending":
+            todos = todos.filter(completed=False)
+        elif filter_params =="completed":
+            todos = todos.filter(completed=True)
+
+
+        
     #todos = Todo.objects.all()
     #todos = Todo.objects.filter(user)
     

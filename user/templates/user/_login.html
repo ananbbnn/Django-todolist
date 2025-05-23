@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}登入{% endblock %}
+{% block content %}
+    <h1>登入</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>
+            <label for="username">名稱:</label>
+            <input required type="text" name="username" id="username" value="{{username}}">
+        </p>
+        <p>
+            <label for="username">密碼:</label>
+            <input required type="password" name="password" id="password">
+        </p>        
+        <button type="submit">登入</button>
+
+    </form>
+    {{message}}
+{% endblock %}
