@@ -87,11 +87,11 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'todolist',
-        'USER':'root',
-        'PASSWORD':'12345678',
-        'HOST':'127.0.0.1',
-        'PORT':3306,
+        'NAME':'defaultdb',
+        'USER':'avnadmin',
+        'PASSWORD':'AVNS_aUlvmIsyfW9AoAKscUt',
+        'HOST':'mysql-5a21f09-ananbbnn-todolist.l.aivencloud.com',
+        'PORT':28384,
 
     }
 }
